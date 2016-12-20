@@ -1,25 +1,25 @@
 
-<html lang ="en" ng-app ="lister">
+<html ng-app ="Lister">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="content/app.css" charset="utf-8">
   <title>Movie List</title>
 </head>
-<body ng-controller="listerController">
+<body ng-controller="ListController">
   <h1> New Movie</h1>
 <form ng-submit="addMovie()">
-  <input type="text" ng-model="movie.value" placeholder="Movie Title">
-  <input type="text" ng-model="movie.value" placeholder="Release Year">
-  <input type="text" ng-model="movie.value" placeholder="Genre">
+  <input type="text" ng-model="movie.title" placeholder="Movie Title">
+  <input type="text" ng-model="movie.year" placeholder="Release Year">
+  <input type="text" ng-model="movie.genre" placeholder="Genre">
 
 <button type = "submit">Done</button>
 </form>
-<div id = "list" ng-controller="listerController">
+<div id = "list">
 <h2> Movie List</h2>
-<ul>
-  <li ng-repeat= "movie in lister.movies by $index">
-    <span ng-bind="movie.name"></span> Released:<span ng-bind="movie.year"></span>
+<ul ng-cloak>
+  <li ng-repeat= "movie in movies track by $index">
+    Movie: <span ng-bind="movie.title"></span> Released: <span ng-bind="movie.year"></span>
     Genre: <span ng-bind="movie.genre"></span>
     <a href="#" ng-click= "editMovie(movie)">(edit)</a>
     <a href="#" ng-click = "removeMovie($index)">(delete)</a>
