@@ -7,21 +7,35 @@
   <title>Movie List</title>
 </head>
 <body ng-controller="ListController">
-  <h1> New Movie</h1>
-<form ng-submit="addMovie()">
+  <h1>Favorite Movies List</h1>
+<form ng-submit="addMovie()" ng-hide = "editing">
   <input type="text" ng-model="movie.title" placeholder="Movie Title">
   <input type="text" ng-model="movie.year" placeholder="Release Year">
   <input type="text" ng-model="movie.genre" placeholder="Genre">
 
-<button type = "submit">Done</button>
+<button type = "submit">Add</button>
 </form>
+
+<form ng-submit="updateMovie()" ng-show = "editing" ng-cloak>
+  <input type="text" ng-model="movie.title" placeholder="Movie Title">
+  <input type="text" ng-model="movie.year" placeholder="Release Year">
+  <input type="text" ng-model="movie.genre" placeholder="Genre">
+
+<button type = "submit">Save</button>
+</form>
+<div ng-show = "errors.length" ng-cloak>
+  <ul><li ng-repeat= "error in errors track by $index">
+    <span ng-bind = "error"></span>
+  </li></ul>
+</div>
 <div id = "list">
 <h2> Movie List</h2>
 <ul ng-cloak>
   <li ng-repeat= "movie in movies track by $index">
-    Movie: <span ng-bind="movie.title"></span> Released: <span ng-bind="movie.year"></span>
-    Genre: <span ng-bind="movie.genre"></span>
-    <a href="#" ng-click= "editMovie(movie)">(edit)</a>
+    Movie: <span ng-bind="movie.title"></span> <br></br>
+    Released: <span ng-bind="movie.year"></span><br></br>
+    Genre: <span ng-bind="movie.genre"></span><br></br>
+    <a href="#" ng-click= "editMovie(movie, $index)">(edit)</a>
     <a href="#" ng-click = "removeMovie($index)">(delete)</a>
   </li>
 </ul>
