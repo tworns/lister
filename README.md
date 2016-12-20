@@ -1,5 +1,5 @@
 # lister
-The lister app allows users to add movies to a list. The list stores the title, year of release, and genere of movies.
+The lister app allows users to add movies to a list. The list stores the title, year of release, and genere of movies. The application currently does not save list items between page refreshes.
 
 #Technical
 This application uses Angular 1.5.x 
